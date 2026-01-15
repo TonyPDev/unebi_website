@@ -2,32 +2,42 @@
 
 ---
 
-<section id="services" class="py-20 bg-white">
-  <div class="container mx-auto px-6">
-    <!-- Section Title -->
+<section id="services" class="py-20 bg-white relative">
+  <div
+    class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none"
+  >
+    <div
+      class="absolute top-20 left-[-100px] w-96 h-96 bg-purple-100/30 rounded-full blur-3xl"
+    >
+    </div>
+    <div
+      class="absolute bottom-20 right-[-100px] w-96 h-96 bg-blue-50/30 rounded-full blur-3xl"
+    >
+    </div>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
     <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">
+      <h2 class="text-4xl md:text-5xl font-bold text-purple-900 mb-4">
         Nuestros Servicios
       </h2>
       <div
         class="w-24 h-1 bg-gradient-to-r from-purple-600 to-blue-500 mx-auto mb-6"
       >
       </div>
-      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-        Ofrecemos a nuestros clientes una amplia gama de ensayos clínicos para
-        verificar la seguridad y eficacia de consumibles para las industrias de
-        salud y consumo humano
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto font-medium">
+        Ofrecemos una amplia gama de ensayos clínicos para verificar la
+        seguridad y eficacia de productos para las industrias de salud y consumo
+        humano.
       </p>
     </div>
 
-    <!-- Services Grid -->
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-      <!-- Service 1 -->
       <div
-        class="group bg-gradient-to-br from-purple-50 to-blue-50 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+        class="group bg-white rounded-3xl p-8 shadow-lg border border-purple-100 hover:shadow-2xl hover:border-purple-300 transition-all duration-300 hover:-translate-y-2"
       >
         <div
-          class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+          class="w-16 h-16 bg-gradient-to-br from-purple-700 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md"
         >
           <svg
             class="w-8 h-8 text-white"
@@ -43,8 +53,10 @@
             ></path>
           </svg>
         </div>
-        <h3 class="text-2xl font-bold text-gray-800 mb-4">
-          Estudios de Bioequivalencia y Biodisponibilidad
+        <h3
+          class="text-2xl font-bold text-gray-800 group-hover:text-purple-700 transition-colors mb-4"
+        >
+          Bioequivalencia y Biodisponibilidad
         </h3>
         <p class="text-gray-600 leading-relaxed">
           Evaluamos la equivalencia terapéutica entre formulaciones
@@ -52,12 +64,11 @@
         </p>
       </div>
 
-      <!-- Service 2 -->
       <div
-        class="group bg-gradient-to-br from-purple-50 to-blue-50 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+        class="group bg-white rounded-3xl p-8 shadow-lg border border-purple-100 hover:shadow-2xl hover:border-purple-300 transition-all duration-300 hover:-translate-y-2"
       >
         <div
-          class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+          class="w-16 h-16 bg-gradient-to-br from-purple-700 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md"
         >
           <svg
             class="w-8 h-8 text-white"
@@ -73,8 +84,10 @@
             ></path>
           </svg>
         </div>
-        <h3 class="text-2xl font-bold text-gray-800 mb-4">
-          Ensayos Clínicos Fase I, II, III, IV
+        <h3
+          class="text-2xl font-bold text-gray-800 group-hover:text-purple-700 transition-colors mb-4"
+        >
+          Ensayos Clínicos Fase I-IV
         </h3>
         <p class="text-gray-600 leading-relaxed">
           Coordinación completa de ensayos clínicos en todas sus fases, desde la
@@ -82,12 +95,11 @@
         </p>
       </div>
 
-      <!-- Service 3 -->
       <div
-        class="group bg-gradient-to-br from-purple-50 to-blue-50 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+        class="group bg-white rounded-3xl p-8 shadow-lg border border-purple-100 hover:shadow-2xl hover:border-purple-300 transition-all duration-300 hover:-translate-y-2"
       >
         <div
-          class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+          class="w-16 h-16 bg-gradient-to-br from-purple-700 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md"
         >
           <svg
             class="w-8 h-8 text-white"
@@ -103,7 +115,9 @@
             ></path>
           </svg>
         </div>
-        <h3 class="text-2xl font-bold text-gray-800 mb-4">
+        <h3
+          class="text-2xl font-bold text-gray-800 group-hover:text-purple-700 transition-colors mb-4"
+        >
           Estudios Farmacocinéticos
         </h3>
         <p class="text-gray-600 leading-relaxed">
@@ -112,12 +126,11 @@
         </p>
       </div>
 
-      <!-- Service 4 -->
       <div
-        class="group bg-gradient-to-br from-purple-50 to-blue-50 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+        class="group bg-white rounded-3xl p-8 shadow-lg border border-purple-100 hover:shadow-2xl hover:border-purple-300 transition-all duration-300 hover:-translate-y-2"
       >
         <div
-          class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+          class="w-16 h-16 bg-gradient-to-br from-purple-700 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md"
         >
           <svg
             class="w-8 h-8 text-white"
@@ -133,8 +146,10 @@
             ></path>
           </svg>
         </div>
-        <h3 class="text-2xl font-bold text-gray-800 mb-4">
-          Estudios de Biodisponibilidad Comparativa
+        <h3
+          class="text-2xl font-bold text-gray-800 group-hover:text-purple-700 transition-colors mb-4"
+        >
+          Biodisponibilidad Comparativa
         </h3>
         <p class="text-gray-600 leading-relaxed">
           Evaluación de productos sin interacción para determinar la
@@ -142,12 +157,11 @@
         </p>
       </div>
 
-      <!-- Service 5 -->
       <div
-        class="group bg-gradient-to-br from-purple-50 to-blue-50 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+        class="group bg-white rounded-3xl p-8 shadow-lg border border-purple-100 hover:shadow-2xl hover:border-purple-300 transition-all duration-300 hover:-translate-y-2"
       >
         <div
-          class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+          class="w-16 h-16 bg-gradient-to-br from-purple-700 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md"
         >
           <svg
             class="w-8 h-8 text-white"
@@ -163,8 +177,10 @@
             ></path>
           </svg>
         </div>
-        <h3 class="text-2xl font-bold text-gray-800 mb-4">
-          Estudios de Farmacovigilancia
+        <h3
+          class="text-2xl font-bold text-gray-800 group-hover:text-purple-700 transition-colors mb-4"
+        >
+          Farmacovigilancia
         </h3>
         <p class="text-gray-600 leading-relaxed">
           Monitoreo continuo de la seguridad de medicamentos para identificar y
@@ -172,12 +188,11 @@
         </p>
       </div>
 
-      <!-- Service 6 -->
       <div
-        class="group bg-gradient-to-br from-purple-50 to-blue-50 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+        class="group bg-white rounded-3xl p-8 shadow-lg border border-purple-100 hover:shadow-2xl hover:border-purple-300 transition-all duration-300 hover:-translate-y-2"
       >
         <div
-          class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+          class="w-16 h-16 bg-gradient-to-br from-purple-700 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md"
         >
           <svg
             class="w-8 h-8 text-white"
@@ -198,7 +213,9 @@
             ></path>
           </svg>
         </div>
-        <h3 class="text-2xl font-bold text-gray-800 mb-4">
+        <h3
+          class="text-2xl font-bold text-gray-800 group-hover:text-purple-700 transition-colors mb-4"
+        >
           Estudios Observacionales
         </h3>
         <p class="text-gray-600 leading-relaxed">
@@ -208,42 +225,52 @@
       </div>
     </div>
 
-    <!-- Industries Served -->
     <div class="mt-20 max-w-5xl mx-auto">
       <div
-        class="bg-gradient-to-r from-purple-600 to-blue-500 rounded-3xl p-12"
+        class="bg-gradient-to-r from-purple-800 to-indigo-900 rounded-3xl p-12 shadow-2xl relative overflow-hidden"
       >
-        <h3 class="text-3xl font-bold text-white text-center mb-8">
+        <div
+          class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -mr-20 -mt-20"
+        >
+        </div>
+        <div
+          class="absolute bottom-0 left-0 w-40 h-40 bg-white opacity-5 rounded-full -ml-10 -mb-10"
+        >
+        </div>
+
+        <h3
+          class="text-3xl font-bold text-white text-center mb-8 relative z-10"
+        >
           Industrias que Servimos
         </h3>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 relative z-10">
           <div
-            class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300"
+            class="bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300 border border-white/10 hover:border-white/30 cursor-default"
           >
             <div class="text-white text-lg font-semibold">Médica</div>
           </div>
           <div
-            class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300"
+            class="bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300 border border-white/10 hover:border-white/30 cursor-default"
           >
             <div class="text-white text-lg font-semibold">Cosmética</div>
           </div>
           <div
-            class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300"
+            class="bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300 border border-white/10 hover:border-white/30 cursor-default"
           >
             <div class="text-white text-lg font-semibold">Alimentaria</div>
           </div>
           <div
-            class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300"
+            class="bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300 border border-white/10 hover:border-white/30 cursor-default"
           >
             <div class="text-white text-lg font-semibold">Nutricional</div>
           </div>
           <div
-            class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300"
+            class="bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300 border border-white/10 hover:border-white/30 cursor-default"
           >
             <div class="text-white text-lg font-semibold">Textil</div>
           </div>
           <div
-            class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300 col-span-2 md:col-span-3"
+            class="bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300 col-span-2 md:col-span-3 border border-white/10 hover:border-white/30 cursor-default"
           >
             <div class="text-white text-lg font-semibold">
               Otras Relacionadas
