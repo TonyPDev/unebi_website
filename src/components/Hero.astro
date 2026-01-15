@@ -1,65 +1,110 @@
 ---
-
-import BannerUnebi from '../../public/bannerUnebi.png';
+import BannerUnebi from "../../public/bannerUnebi.png";
 // 2. (Opcional) Importas el componente Image de Astro para máxima optimización
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 ---
 
-<section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+<section
+  id="home"
+  class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+>
   <!-- Animated Background -->
-<div class="absolute inset-0 z-0">
-    <Image 
-      src={BannerUnebi} 
-      alt="Fondo de estudios clínicos" 
+  <div class="absolute inset-0 z-0">
+    <Image
+      src={BannerUnebi}
+      alt="Fondo de estudios clínicos"
       class="w-full h-full object-cover"
       quality="max"
-      loading="eager" 
+      loading="eager"
     />
-    
+
     <div class="absolute inset-0 bg-black/50"></div>
   </div>
 
   <!-- Floating particles -->
   <div class="absolute inset-0 overflow-hidden">
-    <div class="particle absolute w-2 h-2 bg-white rounded-full opacity-60" style="top: 20%; left: 10%; animation: float 6s ease-in-out infinite;"></div>
-    <div class="particle absolute w-3 h-3 bg-white rounded-full opacity-40" style="top: 60%; left: 80%; animation: float 8s ease-in-out infinite 1s;"></div>
-    <div class="particle absolute w-2 h-2 bg-white rounded-full opacity-50" style="top: 40%; left: 60%; animation: float 7s ease-in-out infinite 2s;"></div>
-    <div class="particle absolute w-4 h-4 bg-white rounded-full opacity-30" style="top: 70%; left: 30%; animation: float 9s ease-in-out infinite 0.5s;"></div>
+    <div
+      class="particle absolute w-2 h-2 bg-white rounded-full opacity-60"
+      style="top: 20%; left: 10%; animation: float 6s ease-in-out infinite;"
+    >
+    </div>
+    <div
+      class="particle absolute w-3 h-3 bg-white rounded-full opacity-40"
+      style="top: 60%; left: 80%; animation: float 8s ease-in-out infinite 1s;"
+    >
+    </div>
+    <div
+      class="particle absolute w-2 h-2 bg-white rounded-full opacity-50"
+      style="top: 40%; left: 60%; animation: float 7s ease-in-out infinite 2s;"
+    >
+    </div>
+    <div
+      class="particle absolute w-4 h-4 bg-white rounded-full opacity-30"
+      style="top: 70%; left: 30%; animation: float 9s ease-in-out infinite 0.5s;"
+    >
+    </div>
   </div>
 
   <!-- Content -->
   <div class="container mx-auto px-6 relative z-10">
     <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 animate-fadeInUp">
-        Quality in <span class="block mt-2">Clinical Studies</span>
+      <h1
+        class="text-5xl md:text-7xl font-bold text-white mb-6 animate-fadeInUp"
+      >
+        Calidad en<span class="block mt-2">Estudios Clínicos</span>
       </h1>
-      <p class="text-xl md:text-2xl text-white/90 mb-8 animate-fadeInUp" style="animation-delay: 0.2s;">
-        Contract Research Organization especializada en estudios de Bioequivalencia/Biodisponibilidad y Ensayos Clínicos Fase I, II, III y IV
+      <p
+        class="text-xl md:text-2xl text-white/90 mb-8 animate-fadeInUp"
+        style="animation-delay: 0.2s;"
+      >
+        Organización de investigación por contrato especializada en estudios de
+        Bioequivalencia/Biodisponibilidad y Ensayos Clínicos Fase I, II, III y
+        IV
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp" style="animation-delay: 0.4s;">
-        <a href="#services" class="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300">
+      <div
+        class="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp"
+        style="animation-delay: 0.4s;"
+      >
+        <a
+          href="#services"
+          class="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+        >
           Nuestros Servicios
         </a>
-        <a href="#contact" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition-all duration-300">
+        <a
+          href="#contact"
+          class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition-all duration-300"
+        >
           Contáctanos
         </a>
       </div>
 
       <!-- Stats -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 animate-fadeIn" style="animation-delay: 0.6s;">
-        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300">
+      <div
+        class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 animate-fadeIn"
+        style="animation-delay: 0.6s;"
+      >
+        <div
+          class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300"
+        >
           <div class="text-4xl font-bold text-white mb-2">400+</div>
           <div class="text-white/80 text-sm">Estudios Clínicos</div>
         </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300">
+        <div
+          class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300"
+        >
           <div class="text-4xl font-bold text-white mb-2">700+</div>
           <div class="text-white/80 text-sm">Protocolos Autorizados</div>
         </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300">
+        <div
+          class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300"
+        >
           <div class="text-4xl font-bold text-white mb-2">10+</div>
           <div class="text-white/80 text-sm">Años de Experiencia</div>
         </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300">
+        <div
+          class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300"
+        >
           <div class="text-4xl font-bold text-white mb-2">80</div>
           <div class="text-white/80 text-sm">Voluntarios Simultáneos</div>
         </div>
@@ -68,10 +113,24 @@ import { Image } from 'astro:assets';
   </div>
 
   <!-- Scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-    <a href="#about" class="text-white opacity-70 hover:opacity-100 transition-opacity">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+  <div
+    class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+  >
+    <a
+      href="#about"
+      class="text-white opacity-70 hover:opacity-100 transition-opacity"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
       </svg>
     </a>
   </div>
@@ -79,7 +138,8 @@ import { Image } from 'astro:assets';
 
 <style>
   @keyframes float {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0) translateX(0);
     }
     50% {

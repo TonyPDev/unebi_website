@@ -3,103 +3,108 @@ interface Props {
   title: string;
   description?: string;
 }
-import '../styles/global.css';
+import "../styles/global.css";
 
-const { title, description = "UNEBI - Quality in Clinical Studies" } = Astro.props;
+const { title, description = "UNEBI - Calidad en Estudios Clínicos" } =
+  Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{title}</title>
-  <meta name="description" content={description}>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    html {
-      scroll-behavior: smooth;
-    }
-    
-    body {
-      font-family: 'Inter', sans-serif;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="../../Icono.png" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+
+      html {
+        scroll-behavior: smooth;
       }
-    }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideInLeft {
-      from {
-        opacity: 0;
-        transform: translateX(-50px);
+      body {
+        font-family: "Inter", sans-serif;
       }
-      to {
-        opacity: 1;
-        transform: translateX(0);
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
-    }
 
-    @keyframes slideInRight {
-      from {
-        opacity: 0;
-        transform: translateX(50px);
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
-      to {
-        opacity: 1;
-        transform: translateX(0);
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
       }
-    }
 
-    .animate-fadeInUp {
-      animation: fadeInUp 0.8s ease-out forwards;
-    }
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
 
-    .animate-fadeIn {
-      animation: fadeIn 1s ease-out forwards;
-    }
+      .animate-fadeInUp {
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
 
-    .animate-slideInLeft {
-      animation: slideInLeft 0.8s ease-out forwards;
-    }
+      .animate-fadeIn {
+        animation: fadeIn 1s ease-out forwards;
+      }
 
-    .animate-slideInRight {
-      animation: slideInRight 0.8s ease-out forwards;
-    }
+      .animate-slideInLeft {
+        animation: slideInLeft 0.8s ease-out forwards;
+      }
 
-    .gradient-bg {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
+      .animate-slideInRight {
+        animation: slideInRight 0.8s ease-out forwards;
+      }
 
-    .gradient-text {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-  </style>
-</head>
-<body class="bg-white text-gray-900">
-  <slot />
-</body>
+      .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+
+      .gradient-text {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    </style>
+  </head>
+  <body class="bg-white dark:bg-slate-900 text-black dark:text-white">
+    <slot />
+  </body>
 </html>
