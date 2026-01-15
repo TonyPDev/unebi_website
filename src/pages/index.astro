@@ -11,8 +11,9 @@ import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="UNEBI - Calidad en Estudios Clínicos">
+  <div id="tsparticles" class="fixed inset-0 -z-10 pointer-events-none"></div>
   <Header />
-  <main>
+  <main class="relative z-10">
     <Hero />
     <About />
     <Services />
@@ -22,3 +23,52 @@ import Footer from "../components/Footer.astro";
   </main>
   <Footer />
 </Layout>
+
+<script>
+  import { tsParticles } from "@tsparticles/engine";
+  import { loadFull } from "tsparticles";
+
+  (async () => {
+    await loadFull(tsParticles);
+
+    await tsParticles.load({
+      id: "tsparticles",
+      options: {
+        fullScreen: { enable: false }, // Importante para que no tape todo
+        particles: {
+          number: { value: 60, density: { enable: true, width: 800 } },
+          // COLOR DE PARTÍCULAS: Morado primario para que se vean en fondo blanco
+          color: { value: "#7c3aed" },
+          shape: { type: "circle" },
+          opacity: { value: 0.3 }, // Sutiles
+          size: { value: { min: 2, max: 4 } },
+          // Conexiones entre partículas
+          links: {
+            enable: true,
+            distance: 150,
+            color: "#7c3aed",
+            opacity: 0.2,
+            width: 1,
+          },
+          move: {
+            enable: true,
+            speed: 1.5,
+            direction: "none",
+            outModes: "out",
+          },
+        },
+        interactivity: {
+          events: {
+            onHover: { enable: true, mode: "grab" }, // Efecto de conexión al pasar mouse
+            onClick: { enable: true, mode: "push" },
+          },
+          modes: {
+            grab: { distance: 140, links: { opacity: 0.5 } },
+            push: { quantity: 4 },
+          },
+        },
+        background: { color: "transparent" },
+      },
+    });
+  })();
+</script>
