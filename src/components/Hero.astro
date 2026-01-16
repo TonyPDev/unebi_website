@@ -1,149 +1,207 @@
 ---
-import BannerUnebi from "../../public/bannerUnebi.png";
-// 2. (Opcional) Importas el componente Image de Astro para máxima optimización
-import { Image } from "astro:assets";
+
 ---
 
 <section
   id="home"
-  class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+  class="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden"
 >
-  <!-- Animated Background -->
   <div class="absolute inset-0 z-0">
-    <Image
-      src={BannerUnebi}
-      alt="Fondo de estudios clínicos"
+    <img
+      src="/bannerUnebi.png"
+      alt="Fondo UNEBI Estudios Clínicos"
       class="w-full h-full object-cover"
-      quality="max"
-      loading="eager"
     />
+    <div class="absolute inset-0 bg-slate-900/70"></div>
 
-    <div class="absolute inset-0 bg-black/50"></div>
-  </div>
-
-  <!-- Floating particles -->
-  <div class="absolute inset-0 overflow-hidden">
     <div
-      class="particle absolute w-2 h-2 bg-white rounded-full opacity-60"
-      style="top: 20%; left: 10%; animation: float 6s ease-in-out infinite;"
-    >
-    </div>
-    <div
-      class="particle absolute w-3 h-3 bg-white rounded-full opacity-40"
-      style="top: 60%; left: 80%; animation: float 8s ease-in-out infinite 1s;"
-    >
-    </div>
-    <div
-      class="particle absolute w-2 h-2 bg-white rounded-full opacity-50"
-      style="top: 40%; left: 60%; animation: float 7s ease-in-out infinite 2s;"
-    >
-    </div>
-    <div
-      class="particle absolute w-4 h-4 bg-white rounded-full opacity-30"
-      style="top: 70%; left: 30%; animation: float 9s ease-in-out infinite 0.5s;"
+      class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-slate-900/50 to-transparent"
     >
     </div>
   </div>
 
-  <!-- Content -->
-  <div class="container mx-auto px-6 relative z-10">
-    <div class="max-w-4xl mx-auto text-center">
+  <div id="hero-particles" class="absolute inset-0 z-0"></div>
+
+  <div class="container mx-auto px-6 relative z-10 text-center">
+    <div class="max-w-4xl mx-auto mb-16">
       <h1
-        class="text-5xl md:text-7xl font-bold text-white mb-6 animate-fadeInUp"
+        class="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in-up"
       >
-        Calidad en<span class="block mt-2">Estudios Clínicos</span>
+        Calidad en <span class="text-purple-400">Estudios</span><span
+          class="text-blue-400"
+        >
+          Clínicos</span
+        >
       </h1>
+
       <p
-        class="text-xl md:text-2xl text-white/90 mb-8 animate-fadeInUp"
+        class="text-xl md:text-2xl text-gray-200 mb-8 font-light leading-relaxed animate-fade-in-up"
         style="animation-delay: 0.2s;"
       >
         Organización de investigación por contrato especializada en estudios de
-        Bioequivalencia/Biodisponibilidad y Ensayos Clínicos Fase I, II, III y
-        IV
+        <span class="font-semibold text-white"
+          >Bioequivalencia/Biodisponibilidad</span
+        > y Ensayos Clínicos Fase I, II, III y IV.
       </p>
+
       <div
-        class="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp"
+        class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up"
         style="animation-delay: 0.4s;"
       >
         <a
           href="#services"
-          class="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+          class="bg-purple-600 text-white px-8 py-4 rounded-full font-bold hover:bg-purple-700 hover:shadow-lg hover:shadow-purple-500/30 hover:scale-105 transition-all duration-300"
         >
           Nuestros Servicios
         </a>
         <a
-          href="#contact"
-          class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition-all duration-300"
+          href="mailto:info@unebi.com.mx"
+          class="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-purple-900 transition-all duration-300"
         >
           Contáctanos
         </a>
       </div>
+    </div>
 
-      <!-- Stats -->
+    <div
+      class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 animate-fade-in-up"
+      style="animation-delay: 0.6s;"
+    >
       <div
-        class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 animate-fadeIn"
-        style="animation-delay: 0.6s;"
+        class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 hover:border-purple-400/50 transition-all duration-300 group"
       >
         <div
-          class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300"
+          class="text-4xl md:text-5xl font-extrabold text-white mb-2 group-hover:scale-110 transition-transform inline-block"
         >
-          <div class="text-4xl font-bold text-white mb-2">400+</div>
-          <div class="text-white/80 text-sm">Estudios Clínicos</div>
+          400+
         </div>
-        <div
-          class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300"
-        >
-          <div class="text-4xl font-bold text-white mb-2">700+</div>
-          <div class="text-white/80 text-sm">Protocolos Autorizados</div>
+        <div class="text-gray-300 text-sm md:text-base font-medium">
+          Estudios Clínicos
         </div>
+      </div>
+
+      <div
+        class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 hover:border-blue-400/50 transition-all duration-300 group"
+      >
         <div
-          class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300"
+          class="text-4xl md:text-5xl font-extrabold text-white mb-2 group-hover:scale-110 transition-transform inline-block"
         >
-          <div class="text-4xl font-bold text-white mb-2">10+</div>
-          <div class="text-white/80 text-sm">Años de Experiencia</div>
+          700+
         </div>
+        <div class="text-gray-300 text-sm md:text-base font-medium">
+          Protocolos Autorizados
+        </div>
+      </div>
+
+      <div
+        class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 hover:border-purple-400/50 transition-all duration-300 group"
+      >
         <div
-          class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300"
+          class="text-4xl md:text-5xl font-extrabold text-white mb-2 group-hover:scale-110 transition-transform inline-block"
         >
-          <div class="text-4xl font-bold text-white mb-2">80</div>
-          <div class="text-white/80 text-sm">Voluntarios Simultáneos</div>
+          10+
+        </div>
+        <div class="text-gray-300 text-sm md:text-base font-medium">
+          Años de Experiencia
+        </div>
+      </div>
+
+      <div
+        class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 hover:border-blue-400/50 transition-all duration-300 group"
+      >
+        <div
+          class="text-4xl md:text-5xl font-extrabold text-white mb-2 group-hover:scale-110 transition-transform inline-block"
+        >
+          80
+        </div>
+        <div class="text-gray-300 text-sm md:text-base font-medium">
+          Voluntarios Simultáneos
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Scroll indicator -->
   <div
-    class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+    class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce z-20"
   >
-    <a
-      href="#about"
-      class="text-white opacity-70 hover:opacity-100 transition-opacity"
-    >
-      <svg
-        class="w-6 h-6"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
+    <a href="#about" class="text-white/70 hover:text-white transition-colors">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+        ><path
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="2"
-          d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-      </svg>
+          d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg
+      >
     </a>
   </div>
 </section>
 
+<script>
+  import { tsParticles } from "@tsparticles/engine";
+  import { loadFull } from "tsparticles";
+
+  (async () => {
+    await loadFull(tsParticles);
+
+    await tsParticles.load({
+      id: "hero-particles",
+      options: {
+        fullScreen: { enable: false },
+        fpsLimit: 60, // Limita los FPS para ahorrar batería y recursos
+        particles: {
+          number: {
+            value: 40, // Cantidad fija inicial
+            density: { enable: true, width: 800 },
+          },
+          color: { value: ["#FFFF", "#FFFF"] },
+          shape: { type: "circle" },
+          opacity: { value: 0.6 },
+          size: { value: { min: 2, max: 4 } },
+          links: {
+            enable: true,
+            distance: 150,
+            color: "#FFFF",
+            opacity: 0.3,
+            width: 1,
+          },
+          move: {
+            enable: true,
+            speed: 1,
+            direction: "none",
+            outModes: "bounce",
+          },
+        },
+        interactivity: {
+          events: {
+            onHover: { enable: true, mode: "grab" },
+            onClick: { enable: true, mode: "repulse" }, // ¡SOLUCIÓN AL LAG!
+            resize: { enable: true },
+          },
+          modes: {
+            grab: { distance: 140, links: { opacity: 0.5 } },
+            repulse: { distance: 200, duration: 0.4 },
+          },
+        },
+        background: { color: "transparent" },
+        detectRetina: true,
+      },
+    });
+  })();
+</script>
+
 <style>
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0) translateX(0);
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
     }
-    50% {
-      transform: translateY(-20px) translateX(10px);
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
+  }
+  .animate-fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
   }
 </style>
