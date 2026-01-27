@@ -1,8 +1,83 @@
 ---
+// src/components/Services.astro
 
+const services = [
+  {
+    id: "bioequivalencia",
+    title: "Bioequivalencia y Biodisponibilidad",
+    shortDescription:
+      "Ensayo clínico en voluntarios sanos en el que se administran dos equivalentes farmacéuticos o alternativas farmacéuticas bajo condiciones similares y controladas.",
+    fullDescription: `Ensayo clínico en voluntarios sanos en el que se administran dos equivalentes farmacéuticos o alternativas farmacéuticas bajo condiciones similares y controladas, cuyo objetivo es determinar si existen diferencias estadísticamente significativas entre las biodisponibilidades producidas por ambos medicamentos de estudio.
+    
+    Los estudios de bioequivalencia son la principal herramienta considerada para demostrar, de manera reducida, que un medicamento genérico cumple con las mismas características de calidad, seguridad y eficacia que un medicamento de referencia o innovador.
+    
+    En UNEBI hemos realizado más de 400 estudios clínicos y diseñado más de 700 protocolos que han sido autorizados por COFEPRIS.`,
+    contribution:
+      "Para la población en general, el uso de medicamentos innovadores resulta en un excesivo gasto económico, especialmente para los pacientes que tienen enfermedades crónicas. El uso de medicamentos genéricos es una opción que facilita el acceso a medicamentos seguros y eficaces a un menor precio.",
+    image: "/bioequivalencia_biodisponibilidad.jpg",
+  },
+  {
+    id: "fases",
+    title: "Ensayos Clínicos Fase I-IV",
+    shortDescription:
+      "Ensayos clínicos para probar la eficacia de medicamentos, dispositivos y tratamiento nuevos.",
+    fullDescription: `Ensayos clínicos para probar la eficacia de medicamentos, dispositivos y tratamiento nuevos.
+
+    <strong>Fase I:</strong> se administra por primera vez un medicamento de investigación en individuos sanos, sin beneficio diagnostico o terapéutico, en dosis únicas o múltiples, en grupos pequeños (decenas de 20-80) hospitalizados, para establecer parámetros farmacológicos iniciales en el hombre. Su finalidad es estudiar si un tratamiento nuevo es seguro y busca el mejor modo de administración.
+    
+    <strong>Fase II:</strong> ensayos clínicos para evaluar eficacia y seguridad en población seleccionada de pacientes (de 60 a 300) con la enfermedad o condición a ser tratada, diagnosticada o prevenida.
+    
+    <strong>Fase III:</strong> ensayo clínico en el cual se administra un medicamento de investigación a grupos grandes de pacientes (de cientos a miles), para definir su utilidad terapéutica e identificar reacciones adversas, interacciones y factores externos que puedan alterar el efecto farmacológico generalizado y prolongado.
+    
+    <strong>Fase IV:</strong> ensayos conducidos posterior al lanzamiento del fármaco que proveen datos adicionales de eficacia y seguridad para diferentes formulaciones, dosis, duración de tratamiento, interacciones con otros y comparaciones en grupos poblacionales, crítico para recoger datos de seguridad.`,
+    contribution:
+      "Los estudios clínicos nos indican la viabilidad de innovaciones en los fármacos, indicaciones terapéuticas y presentaciones evaluadas en el campo de la medicina, ofreciendo alternativas a enfermedades sin tratamiento precedente.",
+    image: "/estudios_fase.jpg",
+  },
+  {
+    id: "farmacocinetica",
+    title: "Estudios Farmacocinéticos",
+    shortDescription:
+      "Ensayo clínico que describe el comportamiento de un fármaco a través de los distintos procesos y compartimentos del organismo, incluye el proceso de liberación, absorción, distribución, metabolismo y eliminación.",
+    fullDescription: `Ensayo clínico que describe el comportamiento de un fármaco a través de los distintos procesos y compartimentos del organismo, incluye el proceso de liberación, absorción, distribución, metabolismo y eliminación.`,
+    contribution:
+      "Generar la información correspondiente para mejorar la práctica médica.",
+    image: "/farmacocinetica.jpg",
+  },
+  {
+    id: "biodisponibilidad-comp",
+    title: "Biodisponibilidad Comparativa",
+    shortDescription:
+      "Ensayo clínico que describe la relación entre la biodisponibilidad de dos formas farmacéuticas administradas por vía extravascular para comprobar sinergia o antagonismo entre principios activos.",
+    fullDescription: `Ensayo clínico que describe la relación entre la biodisponibilidad de dos formas farmacéuticas administradas por vía extravascular para comprobar sinergia o antagonismo entre principios activos.`,
+    contribution:
+      "Garantizar mediante estudios clínicos con evidencia científica la disminución de efectos adversos maximizando los efectos terapéuticos.",
+    image: "/biodisponibilidad.jpg",
+  },
+  {
+    id: "farmacovigilancia",
+    title: "Estudios de Farmacovigilancia",
+    shortDescription:
+      "Ensayos post-comercialización. Se realizan después de que se concede registro y autorización al medicamento. Arroja datos epidemiológicos, demuestra seguridad del medicamento",
+    fullDescription: `Ensayos post-comercialización. Se realizan después de que se concede registro y autorización al medicamento. Arroja datos epidemiológicos, demuestra seguridad del medicamento durante su empleo generalizado y prolongado en grupos mayores y diversos, evaluando raza, género, edad, además de encontrar usos adicionales del fármaco.`,
+    contribution:
+      "Cuidar la salud de la población evaluando los efectos adversos provocados por los medicamentos administrados a largo plazo.",
+    image: "/farmacovigilancia.jpg",
+  },
+  {
+    id: "observacionales",
+    title: "Estudios Observacionales",
+    shortDescription:
+      "Ensayo clínico de carácter estadístico y demográfico para describir y estimar la frecuencia de una enfermedad o característica en una población determinada.",
+    fullDescription: `Ensayo clínico de carácter estadístico y demográfico para describir y estimar la frecuencia de una enfermedad o característica en una población determinada. Se limitan a medir las variables que definen el estudio.`,
+    contribution:
+      "Encontrar los patrones de comportamiento que fortalezcan las acciones sanitarias preventivas para enfermedades de prevalencia.",
+    image: "/chequeo.jpeg",
+  },
+];
 ---
 
-<section id="services" class="py-20 bg-white">
+<section id="services" class="py-20 bg-white relative">
   <div
     class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none"
   >
@@ -18,7 +93,7 @@
 
   <div class="container mx-auto px-6 relative z-10">
     <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-bold text-purple-900 mb-4">
+      <h2 class="text-4xl md:text-5xl font-bold text-blue-900 mb-4">
         Nuestros Servicios
       </h2>
       <div
@@ -33,196 +108,49 @@
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-      <div
-        class="group bg-white rounded-3xl p-8 shadow-lg border border-purple-100 hover:shadow-2xl hover:border-purple-300 transition-all duration-300 hover:-translate-y-2"
-      >
-        <div
-          class="w-16 h-16 bg-gradient-to-br from-purple-700 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md"
-        >
-          <svg
-            class="w-8 h-8 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+      {
+        services.map((service) => (
+          <article
+            class="group bg-white rounded-3xl shadow-lg border border-purple-100 hover:shadow-2xl hover:border-purple-300 transition-all duration-300 hover:-translate-y-2 overflow-hidden cursor-pointer service-card"
+            data-id={service.id}
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-            ></path>
-          </svg>
-        </div>
-        <h3
-          class="text-2xl font-bold text-gray-800 group-hover:text-purple-700 transition-colors mb-4"
-        >
-          Bioequivalencia y Biodisponibilidad
-        </h3>
-        <p class="text-gray-600 leading-relaxed">
-          Evaluamos la equivalencia terapéutica entre formulaciones
-          farmacéuticas mediante estudios comparativos rigurosos.
-        </p>
-      </div>
+            <div class="relative h-48 overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10" />
+              <img
+                src={service.image}
+                alt={service.title}
+                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+              />
+            </div>
 
-      <div
-        class="group bg-white rounded-3xl p-8 shadow-lg border border-purple-100 hover:shadow-2xl hover:border-purple-300 transition-all duration-300 hover:-translate-y-2"
-      >
-        <div
-          class="w-16 h-16 bg-gradient-to-br from-purple-700 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md"
-        >
-          <svg
-            class="w-8 h-8 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
-            ></path>
-          </svg>
-        </div>
-        <h3
-          class="text-2xl font-bold text-gray-800 group-hover:text-purple-700 transition-colors mb-4"
-        >
-          Ensayos Clínicos Fase I-IV
-        </h3>
-        <p class="text-gray-600 leading-relaxed">
-          Coordinación completa de ensayos clínicos en todas sus fases, desde la
-          evaluación inicial hasta estudios post-comercialización.
-        </p>
-      </div>
-
-      <div
-        class="group bg-white rounded-3xl p-8 shadow-lg border border-purple-100 hover:shadow-2xl hover:border-purple-300 transition-all duration-300 hover:-translate-y-2"
-      >
-        <div
-          class="w-16 h-16 bg-gradient-to-br from-purple-700 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md"
-        >
-          <svg
-            class="w-8 h-8 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-            ></path>
-          </svg>
-        </div>
-        <h3
-          class="text-2xl font-bold text-gray-800 group-hover:text-purple-700 transition-colors mb-4"
-        >
-          Estudios Farmacocinéticos
-        </h3>
-        <p class="text-gray-600 leading-relaxed">
-          Análisis detallado de absorción, distribución, metabolismo y excreción
-          de fármacos en el organismo.
-        </p>
-      </div>
-
-      <div
-        class="group bg-white rounded-3xl p-8 shadow-lg border border-purple-100 hover:shadow-2xl hover:border-purple-300 transition-all duration-300 hover:-translate-y-2"
-      >
-        <div
-          class="w-16 h-16 bg-gradient-to-br from-purple-700 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md"
-        >
-          <svg
-            class="w-8 h-8 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
-            ></path>
-          </svg>
-        </div>
-        <h3
-          class="text-2xl font-bold text-gray-800 group-hover:text-purple-700 transition-colors mb-4"
-        >
-          Biodisponibilidad Comparativa
-        </h3>
-        <p class="text-gray-600 leading-relaxed">
-          Evaluación de productos sin interacción para determinar la
-          biodisponibilidad relativa entre formulaciones.
-        </p>
-      </div>
-
-      <div
-        class="group bg-white rounded-3xl p-8 shadow-lg border border-purple-100 hover:shadow-2xl hover:border-purple-300 transition-all duration-300 hover:-translate-y-2"
-      >
-        <div
-          class="w-16 h-16 bg-gradient-to-br from-purple-700 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md"
-        >
-          <svg
-            class="w-8 h-8 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-            ></path>
-          </svg>
-        </div>
-        <h3
-          class="text-2xl font-bold text-gray-800 group-hover:text-purple-700 transition-colors mb-4"
-        >
-          Farmacovigilancia
-        </h3>
-        <p class="text-gray-600 leading-relaxed">
-          Monitoreo continuo de la seguridad de medicamentos para identificar y
-          evaluar efectos adversos.
-        </p>
-      </div>
-
-      <div
-        class="group bg-white rounded-3xl p-8 shadow-lg border border-purple-100 hover:shadow-2xl hover:border-purple-300 transition-all duration-300 hover:-translate-y-2"
-      >
-        <div
-          class="w-16 h-16 bg-gradient-to-br from-purple-700 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md"
-        >
-          <svg
-            class="w-8 h-8 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-            ></path>
-          </svg>
-        </div>
-        <h3
-          class="text-2xl font-bold text-gray-800 group-hover:text-purple-700 transition-colors mb-4"
-        >
-          Estudios Observacionales
-        </h3>
-        <p class="text-gray-600 leading-relaxed">
-          Investigación de efectos y resultados en condiciones de práctica
-          clínica habitual sin intervención experimental.
-        </p>
-      </div>
+            <div class="p-8">
+              <h3 class="text-2xl font-bold text-gray-800 group-hover:text-purple-700 transition-colors mb-4 line-clamp-2 min-h-[4rem]">
+                {service.title}
+              </h3>
+              <p class="text-gray-600 leading-relaxed mb-6 line-clamp-3">
+                {service.shortDescription}
+              </p>
+              <button class="text-purple-600 font-semibold group-hover:text-purple-800 flex items-center gap-2 transition-colors">
+                Ver más
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 transform group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </button>
+            </div>
+          </article>
+        ))
+      }
     </div>
 
     <div class="mt-20 max-w-5xl mx-auto">
@@ -280,4 +208,226 @@
       </div>
     </div>
   </div>
+
+  <div
+    id="service-modal"
+    class="fixed inset-0 z-[9999] hidden"
+    aria-labelledby="modal-title"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div
+      class="fixed inset-0 bg-gray-900/75 backdrop-blur-sm transition-opacity opacity-0"
+      id="modal-backdrop"
+    >
+    </div>
+
+    <div
+      class="fixed inset-0 z-[10000] overflow-y-auto"
+      id="modal-scroll-wrapper"
+    >
+      <div
+        class="flex min-h-full items-center justify-center p-4 text-center sm:p-0"
+        id="modal-center-container"
+      >
+        <div
+          class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl opacity-0 scale-95"
+          id="modal-panel"
+        >
+          <button
+            type="button"
+            class="absolute right-4 top-4 text-gray-500 hover:text-gray-700 hover:bg-gray-100 z-20 p-2 rounded-full transition-colors"
+            id="close-modal"
+          >
+            <span class="sr-only">Cerrar</span>
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+
+          <div class="h-48 sm:h-64 w-full overflow-hidden relative">
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent z-[1]"
+            >
+            </div>
+            <img
+              id="modal-image"
+              src=""
+              alt=""
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <div class="px-6 pb-8 pt-4 sm:p-10 relative z-10 -mt-12">
+            <div class="bg-white rounded-xl shadow-sm p-3 mb-6 inline-block">
+              <h3
+                class="text-2xl sm:text-3xl font-bold text-purple-900"
+                id="modal-title"
+              >
+              </h3>
+            </div>
+
+            <div class="mt-2 space-y-6">
+              <div
+                class="text-gray-600 leading-relaxed text-lg whitespace-pre-line"
+                id="modal-description"
+              >
+              </div>
+
+              <div
+                class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-xl shadow-sm"
+              >
+                <h4
+                  class="text-blue-900 font-bold text-lg mb-2 flex items-center gap-2"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+                    ></path>
+                  </svg>
+                  Contribución Social
+                </h4>
+                <p
+                  class="text-blue-800/80 leading-relaxed"
+                  id="modal-contribution"
+                >
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-8 flex justify-end">
+              <button
+                type="button"
+                class="rounded-lg bg-purple-600 px-6 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-purple-500 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600 transition-all transform hover:-translate-y-0.5"
+                id="close-modal-btn"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<script define:vars={{ services }}>
+  // Elementos del DOM
+  const modal = document.getElementById("service-modal");
+  const backdrop = document.getElementById("modal-backdrop");
+  const scrollWrapper = document.getElementById("modal-scroll-wrapper");
+  const panel = document.getElementById("modal-panel");
+
+  // Elementos de contenido
+  const modalTitle = document.getElementById("modal-title");
+  const modalDesc = document.getElementById("modal-description");
+  const modalContrib = document.getElementById("modal-contribution");
+  const modalImage = document.getElementById("modal-image");
+
+  // Botones
+  const closeBtns = [
+    document.getElementById("close-modal"),
+    document.getElementById("close-modal-btn"),
+  ];
+  const serviceCards = document.querySelectorAll(".service-card");
+
+  // Referencia al Header global (para ocultarlo si es necesario visualmente)
+  const siteHeader = document.querySelector("header");
+
+  // Función para abrir modal
+  function openModal(serviceId) {
+    const service = services.find((s) => s.id === serviceId);
+    if (!service) return;
+
+    // Llenar datos
+    modalTitle.innerText = service.title;
+    modalDesc.innerHTML = service.fullDescription.replace(/\n/g, "<br>");
+    modalContrib.innerText = service.contribution;
+    modalImage.src = service.image;
+
+    // Ocultar header principal para evitar superposiciones visuales
+    if (siteHeader) {
+      siteHeader.style.transition = "opacity 0.3s";
+      siteHeader.style.opacity = "0";
+      siteHeader.style.pointerEvents = "none"; // Evitar clicks fantasma
+    }
+
+    // Mostrar modal
+    modal.classList.remove("hidden");
+    // Pequeño delay para animaciones
+    setTimeout(() => {
+      backdrop.classList.remove("opacity-0");
+      panel.classList.remove("opacity-0", "scale-95");
+      panel.classList.add("scale-100");
+    }, 10);
+
+    // Bloquear scroll del body
+    document.body.style.overflow = "hidden";
+  }
+
+  // Función para cerrar modal
+  function closeModal() {
+    backdrop.classList.add("opacity-0");
+    panel.classList.remove("scale-100");
+    panel.classList.add("opacity-0", "scale-95");
+
+    // Restaurar header
+    if (siteHeader) {
+      siteHeader.style.opacity = "1";
+      siteHeader.style.pointerEvents = "auto";
+    }
+
+    setTimeout(() => {
+      modal.classList.add("hidden");
+      document.body.style.overflow = ""; // Restaurar scroll
+    }, 300);
+  }
+
+  // Event Listeners
+  serviceCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const id = card.getAttribute("data-id");
+      openModal(id);
+    });
+  });
+
+  closeBtns.forEach((btn) => btn?.addEventListener("click", closeModal));
+
+  // Cerrar al dar click fuera (en el wrapper o backdrop)
+  // El evento click se propaga al wrapper si clickeas fuera del panel
+  scrollWrapper?.addEventListener("click", (e) => {
+    // Si el target clickeado es el wrapper mismo o el contenedor de centrado
+    // significa que no clickeamos dentro del panel
+    if (
+      e.target === scrollWrapper ||
+      e.target.id === "modal-center-container"
+    ) {
+      closeModal();
+    }
+  });
+
+  // Cerrar con tecla ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+      closeModal();
+    }
+  });
+</script>
