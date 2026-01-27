@@ -1,22 +1,278 @@
 ---
+// src/components/Experience.astro
 
+// Lista completa de activos para el modal
+const allSuccessCases = [
+  "Abacavir",
+  "Abacavir/Lamivudine",
+  "Acarbose (serum Glucose)",
+  "Acebrophilin",
+  "Acemetacin",
+  "Acetazolamide",
+  "Albendazole",
+  "Albendazole/Albendazole sulfoxidoe",
+  "Algestone/Estradiol",
+  "Allopurinol",
+  "Alpha-lipoic Acid",
+  "Alprazolam",
+  "Alprazolam/sulpiride",
+  "Alverine /simeticone",
+  "Amantadine",
+  "Amantadine /Chlorphenamine /Acetaminophen",
+  "Amiodarone/Metabolite N- Desmethyl-Amiodarone",
+  "Amlodipine",
+  "Amoxicillin",
+  "Amoxicillin/Ambroxol",
+  "Amoxicillin/Bromhexine",
+  "Amoxicillin/Clavulanic Acid",
+  "Ampicillin",
+  "Apixaban",
+  "Aripiprazole/Metabolite Dehydroaripiprazole",
+  "Atazanavir",
+  "Atorvastatin",
+  "Azathioprine/Metabolite 6-Mercaptopurine",
+  "Beclomethasone",
+  "Benzylpenicillin",
+  "Betamethasone",
+  "Betamethasone/Loratadine",
+  "Bezafibrate",
+  "Bicalutamide",
+  "Bisoprolol",
+  "Bosentan",
+  "Bumetanide",
+  "Buprenorphine",
+  "Cabergoline",
+  "Caffeine",
+  "Caffeine/Acetaminophen",
+  "Calcitriol",
+  "Captopril",
+  "Carbamazepine",
+  "Carbidopa/Levodopa",
+  "Carboxylic acid",
+  "Carisoprodol",
+  "Carisoprodol/Clonixin",
+  "Cefaclor",
+  "Cefixime",
+  "Ceftibuten",
+  "Ceftiofur",
+  "Cefuroxime",
+  "Celecoxib",
+  "Cephalexin",
+  "Cetirizine",
+  "Chlormadinone",
+  "Chloropyramine",
+  "Chlorphenamine",
+  "Chondroitin/Diacerein/Rhein Metabolite",
+  "Cilostazol",
+  "Cinitapride",
+  "Cinnarizine",
+  "Ciprofibrate",
+  "Ciprofloxacin",
+  "Cisapride",
+  "Clarithromycin",
+  "Clavulanic Acid",
+  "Clindamycin",
+  "Clobenzorex",
+  "Clonazepam",
+  "Clopidogrel/Metabolite SR-26334",
+  "Clozapine",
+  "Curcumin",
+  "Cyclobenzaprine",
+  "Cyclosporine",
+  "Cyproterone",
+  "Darunavir",
+  "Deferasirox",
+  "Deflazacort",
+  "Desloratadine",
+  "Desmopressin",
+  "Dexamethasone",
+  "Diacerein (Rhein Metabolite)",
+  "Diclofenac",
+  "Didanosine",
+  "Digoxin",
+  "Dihydrostreptomycin",
+  "Diphenhydramine",
+  "Doxycycline",
+  "Dutasteride/Tamsulosin",
+  "Efavirenz",
+  "Epinastine",
+  "Erythromicyn",
+  "Escitalopram",
+  "Esomeprazol",
+  "Etericoxib",
+  "Etofenamate",
+  "Etravirine",
+  "Exemestane",
+  "Ezetimibe/Simvastatin",
+  "Ezetimibe/Rosuvastatin",
+  "Felodipine",
+  "Fenofibrate/Simvastatin",
+  "Fexofenadine",
+  "Finasteride",
+  "Fipronil/Metabolite Fipronil Sulfone",
+  "Fluconazole",
+  "Fluoxetine/Metabolite Norfluoxetine",
+  "Flutamide/Metabolite 2-Hydroxyfluthamide",
+  "Fluvastatin",
+  "Fosfomycin/Phenazopyridine",
+  "Furosemide",
+  "Gabapentin/Meloxicam",
+  "Gabapentin/Tramadol",
+  "Gemfibrozil",
+  "Glibenclamide",
+  "Glimepiride/Metformin",
+  "Groserelin",
+  "Hydrochlorothiazide",
+  "Hydrochlorothiazide/Irbesartan",
+  "Hydrochlorothiazide/Losartan",
+  "Hydrochlorothiazide/Telmisartan",
+  "Hydroxychloroquine",
+  "Ibuprofen",
+  "Ibuprofen/Butylhyoscine",
+  "Ibuprofen/Caffeine",
+  "Ibuprofen/Methocarbamol",
+  "Imipramine/Metabolite Desipramine",
+  "Indinavir",
+  "Indomethacin",
+  "Indomethacin/Acemetacin",
+  "Indomethacin/Methocarbamol + Meloxicam",
+  "Irbesartan",
+  "Irbesartan/Hydrochlorothiazide",
+  "Isotretinoin",
+  "Itopride",
+  "Itraconazole",
+  "Ketoconazole",
+  "Ketorolac",
+  "Lamivudine",
+  "Lamivudine/Zidovudine",
+  "Lamotrigine",
+  "Lansoprazole",
+  "Lercanidipine",
+  "Levofloxacin",
+  "Levonorgestrel",
+  "Levonorgestrel/Ethinylestradiol",
+  "Levothyroxine",
+  "Lincomycin",
+  "Linezolid",
+  "Loperamide",
+  "Lopinavir",
+  "Loratadine/Metabolite Desloratadine",
+  "Losartan/Metabolite EXP3174",
+  "lysine clonixinate",
+  "Medroxyprogesterone",
+  "Meloxicam",
+  "Memantine",
+  "Metamizole/Metabolite 4-N-Methylaminoantipyrine",
+  "Metformin",
+  "Metformin/Glibenclamide",
+  "Metformin/Glimepiride",
+  "Methocarbamol",
+  "Methyldopa",
+  "Methylphenidate",
+  "Methylprednisolone",
+  "Metoclopramide",
+  "Metronidazole",
+  "Midazolam",
+  "Modafinil",
+  "Montelukast",
+  "Moxifloxacin",
+  "Nalidixic Acid",
+  "Nalidixic Acid/Phenazopyridine",
+  "Naproxen",
+  "Naproxen/Paracetamol",
+  "Neomycin",
+  "Nifedipine",
+  "Nitrofurantoin",
+  "Norfloxacin",
+  "Octreotide",
+  "Ofloxacin",
+  "Olanzapine",
+  "Omeprazole",
+  "Oxcarbazepine",
+  "Oxytetracycline",
+  "Pancreatin/Metoclopramide/Bromelains/Simethicone",
+  "Pantoprazole",
+  "Paracetamol",
+  "Pargeverine",
+  "Paroxetine",
+  "Sodium Penicillin/Procaine Penicillin",
+  "Pentoxifylline/Metabolite V",
+  "Phenazopyridine",
+  "Phenobarbital",
+  "Phentermine",
+  "Phenylephrine",
+  "Phloroglucinol/Trimethylphloroglucinol",
+  "Phloroglucinol/Trimethyl-phloroglucinol",
+  "Pioglitazone",
+  "Piperidolate",
+  "Piroxicam",
+  "Pravastatin",
+  "Prazosin",
+  "Pregabalin",
+  "Prucalopride",
+  "Pyridostigmine",
+  "Ractopamine",
+  "Raloxifene/Metabolites",
+  "Raloxifene-4-Glucoronide & Raloxifene-6-Glucoronide",
+  "Ramipril/Ramiprilate Metabolite",
+  "Ribavirin",
+  "Rifaximin",
+  "Ritonavir",
+  "Rivaroxaban",
+  "Rosuvastatin",
+  "Salicylic Acid",
+  "Saquinavir",
+  "Sertraline",
+  "Sildenafil",
+  "Silybin",
+  "Simvastatin",
+  "Simvastatin B-hydroxy acid",
+  "Sirolimus",
+  "Sitagliptin",
+  "Sitagliptin/Metformin",
+  "S-Ketorolac",
+  "Spironolactone",
+  "Stavudine",
+  "Sulfamethoxazole/Trimethoprim",
+  "Tacrolimus",
+  "Tadalafil",
+  "Tamsulosin",
+  "Telmisartan",
+  "Telmisartan/Hydrochlorothiazide",
+  "Tenofovir/Emtricitabine",
+  "Theophylline",
+  "Tibolone/Metabolites",
+  "3a-Hydroxytibolone & 3B-Hydroxytibolone",
+  "Topiramate",
+  "Tramadol/Ketorolac",
+  "Trimebutine/Metabolite Desmethyl Trimebutine",
+  "Tylosin",
+  "Ursodeoxycholic acid",
+  "Valproic Acid",
+  "Valsartan",
+  "Zidovudine",
+  "Zilpaterol",
+  "Ziprasidone",
+  "Zolmitriptan",
+  "Zolpidem",
+];
 ---
 
-<section id="experience" class="py-20 bg-white">
+<section id="experience" class="py-20 bg-white relative">
   <div class="container mx-auto px-6">
     <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-bold text-blue-900 mb-4">
+      <h2 class="text-4xl md:text-5xl font-bold text-cyan-900 mb-4">
         Nuestra Experiencia
       </h2>
-      <div class="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+      <div class="w-24 h-1 bg-cyan-600 mx-auto mb-6"></div>
     </div>
 
     <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-20">
       <div
-        class="bg-white rounded-3xl p-10 text-center shadow-lg border border-purple-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+        class="bg-white rounded-3xl p-10 text-center shadow-lg border border-cyan-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
       >
         <div
-          class="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-blue-600 mb-4 group-hover:scale-110 transition-transform duration-300 inline-block"
+          class="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-700 to-blue-600 mb-4 group-hover:scale-110 transition-transform duration-300 inline-block"
         >
           400+
         </div>
@@ -27,10 +283,10 @@
       </div>
 
       <div
-        class="bg-white rounded-3xl p-10 text-center shadow-lg border border-purple-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+        class="bg-white rounded-3xl p-10 text-center shadow-lg border border-cyan-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
       >
         <div
-          class="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-700 mb-4 group-hover:scale-110 transition-transform duration-300 inline-block"
+          class="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-700 mb-4 group-hover:scale-110 transition-transform duration-300 inline-block"
         >
           700+
         </div>
@@ -41,10 +297,10 @@
       </div>
 
       <div
-        class="bg-white rounded-3xl p-10 text-center shadow-lg border border-purple-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+        class="bg-white rounded-3xl p-10 text-center shadow-lg border border-cyan-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
       >
         <div
-          class="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-indigo-600 mb-4 group-hover:scale-110 transition-transform duration-300 inline-block"
+          class="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-700 to-blue-600 mb-4 group-hover:scale-110 transition-transform duration-300 inline-block"
         >
           10+
         </div>
@@ -56,7 +312,7 @@
     </div>
 
     <div
-      class="max-w-4xl mx-auto mb-20 bg-gradient-to-r from-blue-900 to-indigo-900 rounded-3xl p-12 shadow-2xl relative overflow-hidden text-center"
+      class="max-w-4xl mx-auto mb-20 bg-gradient-to-r from-cyan-900 to-blue-900 rounded-3xl p-12 shadow-2xl relative overflow-hidden text-center"
     >
       <div
         class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -mr-20 -mt-20"
@@ -70,7 +326,7 @@
       <h3 class="text-3xl font-bold text-white mb-6 relative z-10">
         Nuestro Equipo
       </h3>
-      <p class="text-xl text-purple-100 leading-relaxed relative z-10">
+      <p class="text-xl text-cyan-100 leading-relaxed relative z-10">
         Las y los médicos e investigadores de UNEBI suman a la organización más
         de 10 años de experiencia ininterrumpida en el sector médico y
         farmacéutico. Desde 2011, UNEBI ha realizado más de 400 estudios
@@ -82,8 +338,8 @@
     </div>
 
     <div class="text-center mb-12">
-      <h3 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
-        Principios Activos
+      <h3 class="text-3xl md:text-4xl font-bold text-cyan-900 mb-4">
+        Casos de Éxito
       </h3>
       <p class="text-lg text-gray-600">
         Experiencia comprobada en diversas áreas terapéuticas
@@ -92,36 +348,29 @@
 
     <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       <div
-        class="bg-purple-50 rounded-2xl p-8 hover:bg-white hover:shadow-lg hover:border-purple-200 border border-transparent transition-all duration-300"
+        class="bg-cyan-50 rounded-2xl p-8 hover:bg-white hover:shadow-lg hover:border-cyan-200 border border-transparent transition-all duration-300 group"
       >
         <h4
-          class="font-bold text-purple-800 mb-4 text-xl flex items-center gap-2"
+          class="font-bold text-cyan-800 mb-4 text-xl flex items-center gap-2"
         >
-          <span class="w-2 h-8 bg-purple-500 rounded-full"></span>
+          <span class="w-2 h-8 bg-cyan-500 rounded-full"></span>
           Antivirales
         </h4>
         <div class="flex flex-wrap gap-2">
-          <span
-            class="bg-white border border-purple-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium"
-            >Abacavir</span
-          >
-          <span
-            class="bg-white border border-purple-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium"
-            >Lamivudina</span
-          >
-          <span
-            class="bg-white border border-purple-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium"
-            >Zidovudina</span
-          >
-          <span
-            class="bg-white border border-purple-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium"
-            >Efavirenz</span
-          >
+          {
+            ["Abacavir", "Lamivudina", "Zidovudina", "Efavirenz"].map(
+              (active) => (
+                <span class="bg-white border border-cyan-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium hover:scale-110 hover:bg-cyan-100 hover:text-cyan-800 hover:shadow-sm transition-all duration-300 cursor-default">
+                  {active}
+                </span>
+              ),
+            )
+          }
         </div>
       </div>
 
       <div
-        class="bg-blue-50 rounded-2xl p-8 hover:bg-white hover:shadow-lg hover:border-blue-200 border border-transparent transition-all duration-300"
+        class="bg-blue-50 rounded-2xl p-8 hover:bg-white hover:shadow-lg hover:border-blue-200 border border-transparent transition-all duration-300 group"
       >
         <h4
           class="font-bold text-blue-800 mb-4 text-xl flex items-center gap-2"
@@ -130,120 +379,382 @@
           Cardiovasculares
         </h4>
         <div class="flex flex-wrap gap-2">
-          <span
-            class="bg-white border border-blue-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium"
-            >Amlodipino</span
-          >
-          <span
-            class="bg-white border border-blue-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium"
-            >Atorvastatina</span
-          >
-          <span
-            class="bg-white border border-blue-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium"
-            >Losartán</span
-          >
+          {
+            ["Amlodipino", "Atorvastatina", "Losartán"].map((active) => (
+              <span class="bg-white border border-blue-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium hover:scale-110 hover:bg-blue-100 hover:text-blue-800 hover:shadow-sm transition-all duration-300 cursor-default">
+                {active}
+              </span>
+            ))
+          }
         </div>
       </div>
 
       <div
-        class="bg-indigo-50 rounded-2xl p-8 hover:bg-white hover:shadow-lg hover:border-indigo-200 border border-transparent transition-all duration-300"
+        class="bg-cyan-50 rounded-2xl p-8 hover:bg-white hover:shadow-lg hover:border-cyan-200 border border-transparent transition-all duration-300 group"
       >
         <h4
-          class="font-bold text-indigo-800 mb-4 text-xl flex items-center gap-2"
+          class="font-bold text-cyan-900 mb-4 text-xl flex items-center gap-2"
         >
-          <span class="w-2 h-8 bg-indigo-500 rounded-full"></span>
+          <span class="w-2 h-8 bg-cyan-700 rounded-full"></span>
           Antibióticos
         </h4>
         <div class="flex flex-wrap gap-2">
-          <span
-            class="bg-white border border-indigo-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium"
-            >Amoxicilina</span
-          >
-          <span
-            class="bg-white border border-indigo-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium"
-            >Ciprofloxacino</span
-          >
-          <span
-            class="bg-white border border-indigo-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium"
-            >Azitromicina</span
-          >
+          {
+            ["Amoxicilina", "Ciprofloxacino", "Azitromicina"].map((active) => (
+              <span class="bg-white border border-cyan-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium hover:scale-110 hover:bg-cyan-100 hover:text-cyan-900 hover:shadow-sm transition-all duration-300 cursor-default">
+                {active}
+              </span>
+            ))
+          }
         </div>
       </div>
 
       <div
-        class="bg-purple-50 rounded-2xl p-8 hover:bg-white hover:shadow-lg hover:border-purple-200 border border-transparent transition-all duration-300"
+        class="bg-cyan-50 rounded-2xl p-8 hover:bg-white hover:shadow-lg hover:border-cyan-200 border border-transparent transition-all duration-300 group"
       >
         <h4
-          class="font-bold text-purple-800 mb-4 text-xl flex items-center gap-2"
+          class="font-bold text-cyan-800 mb-4 text-xl flex items-center gap-2"
         >
-          <span class="w-2 h-8 bg-purple-500 rounded-full"></span>
+          <span class="w-2 h-8 bg-cyan-500 rounded-full"></span>
           Antiinflamatorios
         </h4>
         <div class="flex flex-wrap gap-2">
-          <span
-            class="bg-white border border-purple-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium"
-            >Ibuprofeno</span
-          >
-          <span
-            class="bg-white border border-purple-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium"
-            >Diclofenaco</span
-          >
-          <span
-            class="bg-white border border-purple-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium"
-            >Celecoxib</span
-          >
+          {
+            ["Ibuprofeno", "Diclofenaco", "Celecoxib"].map((active) => (
+              <span class="bg-white border border-cyan-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium hover:scale-110 hover:bg-cyan-100 hover:text-cyan-800 hover:shadow-sm transition-all duration-300 cursor-default">
+                {active}
+              </span>
+            ))
+          }
         </div>
       </div>
 
       <div
-        class="bg-pink-50 rounded-2xl p-8 hover:bg-white hover:shadow-lg hover:border-pink-200 border border-transparent transition-all duration-300"
-      >
-        <h4
-          class="font-bold text-pink-800 mb-4 text-xl flex items-center gap-2"
-        >
-          <span class="w-2 h-8 bg-pink-500 rounded-full"></span>
-          Antidiabéticos
-        </h4>
-        <div class="flex flex-wrap gap-2">
-          <span
-            class="bg-white border border-pink-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium"
-            >Metformina</span
-          >
-          <span
-            class="bg-white border border-pink-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium"
-            >Glibenclamida</span
-          >
-          <span
-            class="bg-white border border-pink-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium"
-            >Sitagliptina</span
-          >
-        </div>
-      </div>
-
-      <div
-        class="bg-blue-50 rounded-2xl p-8 hover:bg-white hover:shadow-lg hover:border-blue-200 border border-transparent transition-all duration-300"
+        class="bg-blue-50 rounded-2xl p-8 hover:bg-white hover:shadow-lg hover:border-blue-200 border border-transparent transition-all duration-300 group"
       >
         <h4
           class="font-bold text-blue-800 mb-4 text-xl flex items-center gap-2"
         >
-          <span class="w-2 h-8 bg-blue-500 rounded-full"></span>
+          <span class="w-2 h-8 bg-blue-400 rounded-full"></span>
+          Antidiabéticos
+        </h4>
+        <div class="flex flex-wrap gap-2">
+          {
+            ["Metformina", "Glibenclamida", "Sitagliptina"].map((active) => (
+              <span class="bg-white border border-blue-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium hover:scale-110 hover:bg-blue-100 hover:text-blue-800 hover:shadow-sm transition-all duration-300 cursor-default">
+                {active}
+              </span>
+            ))
+          }
+        </div>
+      </div>
+
+      <div
+        class="bg-cyan-50 rounded-2xl p-8 hover:bg-white hover:shadow-lg hover:border-cyan-200 border border-transparent transition-all duration-300 group"
+      >
+        <h4
+          class="font-bold text-cyan-800 mb-4 text-xl flex items-center gap-2"
+        >
+          <span class="w-2 h-8 bg-cyan-500 rounded-full"></span>
           SNC / Psiquiátricos
         </h4>
         <div class="flex flex-wrap gap-2">
-          <span
-            class="bg-white border border-blue-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium"
-            >Sertralina</span
+          {
+            ["Sertralina", "Clonazepam", "Pregabalina"].map((active) => (
+              <span class="bg-white border border-cyan-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium hover:scale-110 hover:bg-cyan-100 hover:text-cyan-800 hover:shadow-sm transition-all duration-300 cursor-default">
+                {active}
+              </span>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 text-center">
+      <button
+        id="open-cases-modal"
+        class="bg-cyan-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg shadow-cyan-200 hover:bg-cyan-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-2"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+          ></path>
+        </svg>
+        Mostrar todos los casos de éxito
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="cases-modal"
+    class="fixed inset-0 z-[9999] hidden"
+    aria-labelledby="modal-title"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div
+      class="fixed inset-0 bg-gray-900/75 backdrop-blur-sm transition-opacity opacity-0"
+      id="cases-backdrop"
+    >
+    </div>
+
+    <div class="fixed inset-0 z-[10000] overflow-y-auto">
+      <div
+        class="flex min-h-full items-center justify-center p-4 text-center sm:p-0"
+      >
+        <div
+          class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-4xl opacity-0 scale-95 flex flex-col max-h-[90vh]"
+          id="cases-panel"
+        >
+          <div
+            class="bg-cyan-600 p-6 flex justify-between items-center shrink-0"
           >
-          <span
-            class="bg-white border border-blue-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium"
-            >Clonazepam</span
+            <h3 class="text-2xl font-bold text-white flex items-center gap-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8 text-cyan-200"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              Todos los Casos de Éxito
+            </h3>
+            <button
+              type="button"
+              class="text-cyan-100 hover:text-white hover:bg-cyan-700 p-2 rounded-full transition-colors"
+              id="close-cases-modal"
+            >
+              <span class="sr-only">Cerrar</span>
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div
+            class="p-6 bg-gray-50 border-b border-gray-200 shrink-0 sticky top-0"
           >
-          <span
-            class="bg-white border border-blue-100 px-3 py-1 rounded-full text-sm text-gray-700 font-medium"
-            >Pregabalina</span
+            <div class="relative">
+              <div
+                class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+              >
+                <svg
+                  class="h-5 w-5 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+              </div>
+              <input
+                type="text"
+                id="case-search"
+                class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl leading-5 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 sm:text-lg transition-shadow"
+                placeholder="Buscar activo (ej. Amoxicilina, Metformina...)"
+              />
+            </div>
+            <p class="mt-2 text-sm text-gray-500 text-right" id="cases-count">
+              Mostrando todos los activos
+            </p>
+          </div>
+
+          <div class="p-6 overflow-y-auto flex-grow custom-scrollbar">
+            <div
+              id="cases-grid"
+              class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3"
+            >
+            </div>
+            <div id="no-results" class="hidden text-center py-12">
+              <svg
+                class="mx-auto h-12 w-12 text-gray-300"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+              <h3 class="mt-2 text-lg font-medium text-gray-900">
+                No se encontraron resultados
+              </h3>
+              <p class="mt-1 text-gray-500">
+                Intenta con otro término de búsqueda.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-gray-50 px-6 py-4 flex justify-end shrink-0 border-t border-gray-100"
           >
+            <button
+              type="button"
+              class="rounded-lg bg-cyan-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 transition-colors"
+              id="close-cases-btn"
+            >
+              Cerrar Lista
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<script define:vars={{ allSuccessCases }}>
+  // Elementos DOM
+  const modal = document.getElementById("cases-modal");
+  const backdrop = document.getElementById("cases-backdrop");
+  const panel = document.getElementById("cases-panel");
+  const openBtn = document.getElementById("open-cases-modal");
+  const closeBtns = [
+    document.getElementById("close-cases-modal"),
+    document.getElementById("close-cases-btn"),
+  ];
+  const searchInput = document.getElementById("case-search");
+  const casesGrid = document.getElementById("cases-grid");
+  const noResults = document.getElementById("no-results");
+  const countLabel = document.getElementById("cases-count");
+
+  // Referencia al Header (para ocultarlo)
+  const siteHeader = document.querySelector("header");
+
+  // Renderizar lista inicial
+  function renderCases(filterText = "") {
+    casesGrid.innerHTML = "";
+    const lowerFilter = filterText.toLowerCase();
+
+    const filtered = allSuccessCases.filter((c) =>
+      c.toLowerCase().includes(lowerFilter),
+    );
+
+    // Actualizar contador
+    countLabel.innerText = `${filtered.length} ${filtered.length === 1 ? "activo encontrado" : "activos encontrados"}`;
+
+    if (filtered.length === 0) {
+      casesGrid.classList.add("hidden");
+      noResults.classList.remove("hidden");
+    } else {
+      casesGrid.classList.remove("hidden");
+      noResults.classList.add("hidden");
+
+      filtered.forEach((text) => {
+        const div = document.createElement("div");
+        div.className =
+          "bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-gray-700 font-medium hover:bg-cyan-50 hover:border-cyan-200 hover:text-cyan-800 transition-colors cursor-default text-sm flex items-center gap-2";
+        div.innerHTML = `
+                <svg class="w-2 h-2 text-cyan-500 flex-shrink-0" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3" /></svg>
+                ${text}
+              `;
+        casesGrid.appendChild(div);
+      });
+    }
+  }
+
+  function openModal() {
+    renderCases(""); // Reiniciar lista
+    searchInput.value = "";
+
+    if (siteHeader) {
+      siteHeader.style.transition = "opacity 0.3s";
+      siteHeader.style.opacity = "0";
+      siteHeader.style.pointerEvents = "none";
+    }
+
+    modal.classList.remove("hidden");
+    setTimeout(() => {
+      backdrop.classList.remove("opacity-0");
+      panel.classList.remove("opacity-0", "scale-95");
+      panel.classList.add("scale-100");
+    }, 10);
+
+    document.body.style.overflow = "hidden";
+
+    // Enfocar buscador después de la animación
+    setTimeout(() => {
+      searchInput.focus();
+    }, 100);
+  }
+
+  function closeModal() {
+    backdrop.classList.add("opacity-0");
+    panel.classList.remove("scale-100");
+    panel.classList.add("opacity-0", "scale-95");
+
+    if (siteHeader) {
+      siteHeader.style.opacity = "1";
+      siteHeader.style.pointerEvents = "auto";
+    }
+
+    setTimeout(() => {
+      modal.classList.add("hidden");
+      document.body.style.overflow = "";
+    }, 300);
+  }
+
+  // Event Listeners
+  openBtn?.addEventListener("click", openModal);
+  closeBtns.forEach((btn) => btn?.addEventListener("click", closeModal));
+
+  // Buscador en tiempo real
+  searchInput?.addEventListener("input", (e) => {
+    renderCases(e.target.value);
+  });
+
+  // Cerrar con ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+      closeModal();
+    }
+  });
+</script>
+
+<style>
+  /* Scrollbar personalizado para la lista */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+</style>
