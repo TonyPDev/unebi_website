@@ -3,12 +3,6 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer class="bg-gray-900 text-white py-16 relative overflow-hidden">
-  <div
-    id="footer-particles"
-    class="absolute inset-0 z-0 pointer-events-none opacity-40"
-  >
-  </div>
-
   <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
     <div
       class="absolute -top-24 -left-24 w-96 h-96 bg-cyan-900/40 rounded-full blur-[80px]"
@@ -20,11 +14,27 @@ const currentYear = new Date().getFullYear();
     </div>
   </div>
 
+  <div
+    id="footer-particles"
+    class="absolute inset-0 z-0 pointer-events-none opacity-40"
+  >
+  </div>
+
   <div class="container mx-auto px-6 relative z-10">
     <div class="grid md:grid-cols-4 gap-12 mb-12">
       <div class="col-span-1 md:col-span-1">
         <div class="flex items-center gap-2 mb-6">
-          <h3 class="text-3xl font-bold text-white tracking-tight">UNEBI</h3>
+          <a
+            href="#"
+            class="flex items-center gap-2 flex-shrink-0 group relative"
+          >
+            <img
+              id="logo-white"
+              src="/UNEBI_LogoBlanco4.png"
+              alt="UNEBI Logo Blanco"
+              class="h-10 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105 block"
+            />
+          </a>
         </div>
         <p class="text-gray-400 text-sm leading-relaxed mb-6">
           Calidad, confianza y velocidad en estudios clínicos. Comprometidos con
@@ -158,15 +168,98 @@ const currentYear = new Date().getFullYear();
               <a class="hover:text-white transition-colors">33 3606 6957</a>
             </div>
           </li>
-          <li class="flex items-start gap-3">
-            <svg
-              class="w-5 h-5 text-cyan-500 mt-0.5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"></svg>
-          </li>
         </ul>
       </div>
     </div>
+
+    <div
+      class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
+    >
+      <p class="text-gray-500 text-sm text-center md:text-left">
+        © {currentYear} UNEBI. Todos los derechos reservados.
+      </p>
+    </div>
   </div>
 </footer>
+
+<button
+  id="back-to-top"
+  class="fixed bottom-8 right-8 bg-cyan-600 text-white p-4 rounded-full shadow-2xl hover:bg-cyan-700 transition-all duration-300 opacity-0 translate-y-10 pointer-events-none z-50 animate-soft-pulse group"
+  aria-label="Volver arriba"
+>
+  <svg
+    class="w-6 h-6 group-hover:-translate-y-1 transition-transform duration-300"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="3"
+      d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+  </svg>
+</button>
+
+<script>
+  // Back to Top Logic
+  const backToTopButton = document.getElementById("back-to-top");
+  if (backToTopButton) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 400) {
+        backToTopButton.classList.remove(
+          "opacity-0",
+          "translate-y-10",
+          "pointer-events-none",
+        );
+      } else {
+        backToTopButton.classList.add(
+          "opacity-0",
+          "translate-y-10",
+          "pointer-events-none",
+        );
+      }
+    });
+    backToTopButton.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  // Footer Particles Logic
+  import { tsParticles } from "@tsparticles/engine";
+  import { loadFull } from "tsparticles";
+
+  (async () => {
+    await loadFull(tsParticles);
+
+    // CORRECCIÓN: Se pasa un solo objeto con 'id' y 'options' dentro
+    await tsParticles.load({
+      id: "footer-particles",
+      options: {
+        fullScreen: { enable: false },
+        particles: {
+          number: { value: 30, density: { enable: true, width: 800 } },
+          // Partículas blancas y Cyan
+          color: { value: ["#ffffff", "#22d3ee"] },
+          shape: { type: "circle" },
+          opacity: { value: 0.3 },
+          size: { value: { min: 1, max: 3 } },
+          move: {
+            enable: true,
+            speed: 0.5,
+            direction: "none",
+            outModes: "out",
+          },
+          links: {
+            enable: true,
+            distance: 150,
+            color: "#ffffff",
+            opacity: 0.1,
+            width: 1,
+          },
+        },
+        background: { color: "transparent" },
+      },
+    });
+  })();
+</script>
