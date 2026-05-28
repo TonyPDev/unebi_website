@@ -1,0 +1,166 @@
+---
+// Puedes colocar este bloque en tu index.astro o en un componente nuevo
+---
+
+<section id="voluntario">
+  <!-- Tarjeta: Voluntariado -->
+  <div class="text-center mb-16 py-20 bg-white relative">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl md:text-5xl font-bold text-cyan-900 mb-4">
+        ¿Te interesa formar parte de UNEBI?
+      </h2>
+      <div class="w-24 h-1 bg-cyan-600 mx-auto mb-6"></div>
+    </div>
+    <div class="unebi-cta-section">
+      <div class="unebi-card">
+        <div class="card-content">
+          <h3>Participa como Voluntario</h3>
+          <p>
+            Únete a UNEBI y ayúdanos a hacer la diferencia. Tu participación es
+            clave.
+          </p>
+        </div>
+        <a
+          href="https://forms.office.com/r/rR0qivVg77"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-pill btn-cyan"
+        >
+          <!-- Icono SVG de Mano/Corazón -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path
+              d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"
+            ></path></svg
+          >
+          Ser Voluntario
+        </a>
+      </div>
+
+      <!-- Tarjeta: Bolsa de Trabajo -->
+      <div class="unebi-card">
+        <div class="card-content">
+          <h3>Bolsa de Trabajo</h3>
+          <p>
+            Descubre nuevas oportunidades profesionales y únete a nuestra red.
+          </p>
+        </div>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd9YOi6d-pFdNM9dAtmvOidxy9NFxECY3UsoFiEP0uLEB5Yaw/viewform?pli=1"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-pill btn-purple"
+        >
+          <!-- Icono SVG de Maletín -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path
+              d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg
+          >
+          Postúlate aquí
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    /* Contenedor principal: Grid para ponerlas lado a lado en PC */
+    .unebi-cta-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 3rem 1rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      font-family:
+        system-ui,
+        -apple-system,
+        sans-serif;
+    }
+
+    /* Estilo de las tarjetas */
+    .unebi-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #f3f4f6;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .unebi-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-content h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #111827;
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-content p {
+      color: #4b5563;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    /* Estilo base del botón (Píldora con ícono) */
+    .btn-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px; /* Hace el botón completamente redondo */
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      color: #ffffff;
+      transition: all 0.3s ease;
+    }
+
+    /* Variante Cyan (como tu imagen) */
+    .btn-cyan {
+      background-color: #009eb3;
+      box-shadow: 0 4px 14px rgba(0, 158, 179, 0.4);
+    }
+    .btn-cyan:hover {
+      background-color: #008294;
+      box-shadow: 0 6px 20px rgba(0, 158, 179, 0.6);
+    }
+
+    /* Variante Morada (para contrastar) */
+    .btn-purple {
+      background-color: #6b21a8;
+      box-shadow: 0 4px 14px rgba(107, 33, 168, 0.4);
+    }
+    .btn-purple:hover {
+      background-color: #581c87;
+      box-shadow: 0 6px 20px rgba(107, 33, 168, 0.6);
+    }
+  </style>
+</section>
