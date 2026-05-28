@@ -1,0 +1,149 @@
+---
+// src/pages/reloj.astro
+// Pantalla de monitoreo estilo 7-Segmentos (Sincronizado atómicamente)
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reloj Rack LED - UNEBI</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/dseg@2.1.0/css/dseg.min.css"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #000000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        font-family: "DSEG7-Classic", sans-serif;
+      }
+
+      .reloj-contenedor {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 3vh;
+      }
+
+      .led-fondo {
+        position: absolute;
+        color: rgba(255, 0, 0, 0.05);
+        font-size: 16vw;
+        line-height: 1;
+        z-index: 1;
+        user-select: none;
+      }
+
+      #reloj-digital {
+        position: relative;
+        color: #ff0000;
+        font-size: 16vw;
+        line-height: 1;
+        z-index: 2;
+        user-select: none;
+      }
+
+      #fecha-actual {
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        font-size: 2.2vw;
+        font-weight: 700;
+        color: #ff3333;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        opacity: 0.85;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reloj-contenedor">
+      <div class="led-fondo">88:88:88</div>
+      <div id="reloj-digital">00:00:00</div>
+    </div>
+
+    <div id="fecha-actual">CARGANDO FECHA...</div>
+
+    <script>
+      (() => {
+        // --- 1. AJUSTE FINO MANUAL (Sincronización con NVR) ---
+        // Ejemplo: Si la página va 5 segundos ATRÁS del NVR, pon 5.
+        // Si la página va 5 segundos ADELANTE del NVR, pon -5.
+        const AJUSTE_SEGUNDOS = -5.8;
+        const desfaseFijo = AJUSTE_SEGUNDOS * 1000;
+
+        // --- 2. LÓGICA DEL RELOJ ---
+        function actualizarReloj() {
+          const ahora = new Date(Date.now() + desfaseFijo);
+
+          const horas = String(ahora.getHours()).padStart(2, "0");
+          const minutos = String(ahora.getMinutes()).padStart(2, "0");
+          const segundos = String(ahora.getSeconds()).padStart(2, "0");
+
+          const relojDigital = document.getElementById("reloj-digital");
+          if (relojDigital) {
+            relojDigital.textContent = `${horas}:${minutos}:${segundos}`;
+          }
+
+          const opcionesFecha = {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          } as const;
+          let fechaTexto = ahora.toLocaleDateString("es-MX", opcionesFecha);
+
+          const fechaActual = document.getElementById("fecha-actual");
+          if (fechaActual) {
+            fechaActual.textContent = fechaTexto.toUpperCase();
+          }
+        }
+
+        setInterval(actualizarReloj, 1000);
+        actualizarReloj();
+
+        // --- 3. WAKE LOCK (Evitar que el Fire TV se suspenda) ---
+        let wakeLock: any = null;
+
+        async function solicitarWakeLock() {
+          try {
+            if ("wakeLock" in navigator) {
+              wakeLock = await (navigator as any).wakeLock.request("screen");
+              // ¡Línea restaurada! Ahora sí lo verás en la consola
+              console.log("🟢 Wake Lock activo: La pantalla no se apagará.");
+
+              wakeLock.addEventListener("release", () => {
+                console.log("🔴 Wake Lock liberado.");
+              });
+            } else {
+              console.warn(
+                "⚠️ Wake Lock API no está disponible en este navegador.",
+              );
+            }
+          } catch (err: any) {
+            console.error(`❌ Error Wake Lock: ${err.message}`);
+          }
+        }
+
+        window.addEventListener("load", solicitarWakeLock);
+        document.addEventListener("visibilitychange", async () => {
+          if (wakeLock !== null && document.visibilityState === "visible") {
+            await solicitarWakeLock();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
