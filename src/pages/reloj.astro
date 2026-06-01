@@ -1,18 +1,13 @@
 ---
 // src/pages/reloj.astro
-// Pantalla de monitoreo estilo 7-Segmentos (Sincronizado atómicamente)
+// Pantalla NVR + Video Hardware Local
 ---
 
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reloj Rack LED - UNEBI</title>
-
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/dseg@2.1.0/css/dseg.min.css"
-    />
+    <title>Reloj Rack - UNEBI</title>
 
     <style>
       body {
@@ -25,7 +20,8 @@
         align-items: center;
         height: 100vh;
         overflow: hidden;
-        font-family: "DSEG7-Classic", sans-serif;
+        /* Usamos la fuente nativa monoespaciada para evitar el error de red de dseg.min.css */
+        font-family: "Courier New", Courier, monospace;
       }
 
       .reloj-contenedor {
@@ -38,8 +34,9 @@
 
       .led-fondo {
         position: absolute;
-        color: rgba(255, 0, 0, 0.05);
+        color: rgba(255, 0, 0, 0.08);
         font-size: 16vw;
+        font-weight: bold;
         line-height: 1;
         z-index: 1;
         user-select: none;
@@ -49,6 +46,7 @@
         position: relative;
         color: #ff0000;
         font-size: 16vw;
+        font-weight: bold;
         line-height: 1;
         z-index: 2;
         user-select: none;
@@ -66,9 +64,29 @@
         text-transform: uppercase;
         opacity: 0.85;
       }
+
+      /* Ocultamos el video real pero sin usar display:none para que el hardware sí lo procese */
+      .hardware-video {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        opacity: 0.01;
+        pointer-events: none;
+        z-index: -1;
+      }
     </style>
   </head>
   <body>
+    <video
+      class="hardware-video"
+      src="/video-vacio.mp4"
+      autoplay
+      loop
+      muted
+      playsinline
+    >
+    </video>
+
     <div class="reloj-contenedor">
       <div class="led-fondo">88:88:88</div>
       <div id="reloj-digital">00:00:00</div>
@@ -78,24 +96,19 @@
 
     <script>
       (() => {
-        // --- 1. AJUSTE FINO MANUAL (Sincronización con NVR) ---
-        // Ejemplo: Si la página va 5 segundos ATRÁS del NVR, pon 5.
-        // Si la página va 5 segundos ADELANTE del NVR, pon -5.
-        const AJUSTE_SEGUNDOS = -5.8;
+        // Ajuste manual
+        const AJUSTE_SEGUNDOS = -0.5;
         const desfaseFijo = AJUSTE_SEGUNDOS * 1000;
 
-        // --- 2. LÓGICA DEL RELOJ ---
         function actualizarReloj() {
           const ahora = new Date(Date.now() + desfaseFijo);
-
           const horas = String(ahora.getHours()).padStart(2, "0");
           const minutos = String(ahora.getMinutes()).padStart(2, "0");
           const segundos = String(ahora.getSeconds()).padStart(2, "0");
 
           const relojDigital = document.getElementById("reloj-digital");
-          if (relojDigital) {
+          if (relojDigital)
             relojDigital.textContent = `${horas}:${minutos}:${segundos}`;
-          }
 
           const opcionesFecha = {
             weekday: "long",
@@ -106,43 +119,11 @@
           let fechaTexto = ahora.toLocaleDateString("es-MX", opcionesFecha);
 
           const fechaActual = document.getElementById("fecha-actual");
-          if (fechaActual) {
-            fechaActual.textContent = fechaTexto.toUpperCase();
-          }
+          if (fechaActual) fechaActual.textContent = fechaTexto.toUpperCase();
         }
 
         setInterval(actualizarReloj, 1000);
         actualizarReloj();
-
-        // --- 3. WAKE LOCK (Evitar que el Fire TV se suspenda) ---
-        let wakeLock: any = null;
-
-        async function solicitarWakeLock() {
-          try {
-            if ("wakeLock" in navigator) {
-              wakeLock = await (navigator as any).wakeLock.request("screen");
-              // ¡Línea restaurada! Ahora sí lo verás en la consola
-              console.log("🟢 Wake Lock activo: La pantalla no se apagará.");
-
-              wakeLock.addEventListener("release", () => {
-                console.log("🔴 Wake Lock liberado.");
-              });
-            } else {
-              console.warn(
-                "⚠️ Wake Lock API no está disponible en este navegador.",
-              );
-            }
-          } catch (err: any) {
-            console.error(`❌ Error Wake Lock: ${err.message}`);
-          }
-        }
-
-        window.addEventListener("load", solicitarWakeLock);
-        document.addEventListener("visibilitychange", async () => {
-          if (wakeLock !== null && document.visibilityState === "visible") {
-            await solicitarWakeLock();
-          }
-        });
       })();
     </script>
   </body>
